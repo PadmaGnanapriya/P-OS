@@ -15,10 +15,27 @@
     mov si, strWelcomeMsg                   ;load message
     call    _disp_str
     
+    push dx									; install interrupt routine for int 8 (timer tick)
+    push es
+    xor ax, ax
+    mov es, ax
+    cli
+    mov word [es:0x8*4], _int0x8			; setup our OS services
+    mov [es:0x8*4+2], cs
+    sti
+    pop es
+    pop dx
+
+
     mov ah, 0x00
     int 0x16                                ; await keypress using BIOS service
     int 0x19                                ; reboot
-    
+
+_int0x8:
+	mov si, strTimer						; load timer message
+	call _disp_str
+    iret
+        
 _disp_str:
     lodsb                                   ; load next character
     or  al, al                              ; test for NUL character
@@ -30,10 +47,10 @@ _disp_str:
     jmp _disp_str
 .DONE:
     ret
-    
+   
 [SEGMENT .data]
-
-    strWelcomeMsg   db  "Welcome to P~OS!", 0x00
+    strWelcomeMsg   db  "Welcome to POS", 0x00
+    strTimer	    db  "Timer called",		 0x00
 
 [SEGMENT .bss]
 
