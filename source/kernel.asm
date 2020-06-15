@@ -32,7 +32,7 @@
     int 0x19                                ; reboot
 
 _int0x8:
-	mov si, strTimer						; load timer message
+	mov si, strAuthor						; load timer message
 	call _disp_str
     iret
         
@@ -49,8 +49,8 @@ _disp_str:
     ret
    
 [SEGMENT .data]
-    strWelcomeMsg   db  "Welcome to POS", 0x00
-    strTimer	    db  "Timer called",		 0x00
+    strWelcomeMsg   db  "     Welcome to P-OS...   ", 0x00
+    strAuthor	    db  "  :-  Padma Gnanapriya  ",0x00
 
 [SEGMENT .bss]
 
