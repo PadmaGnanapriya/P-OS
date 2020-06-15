@@ -8,19 +8,20 @@
     mov es, ax
     
     cli
-    mov ss, ax                              ;stack segment
-    mov sp, 0xFFFF                          ;stack pointer at 64k limit
+    mov ss, ax                              ; stack segment
+    mov sp, 0xFFFF                          ; stack pointer at 64k limit
     sti
     
-    mov si, strWelcomeMsg                   ;load message
+    mov si, strWelcomeMsg                   ; load message
     call    _disp_str
+    call   _display_endl                    ; Make new line
     
-    push dx									; install interrupt routine for int 8 (timer tick)
+    push dx				   ; install interrupt routine for int 8 (timer tick)
     push es
     xor ax, ax
     mov es, ax
     cli
-    mov word [es:0x8*4], _int0x8			; setup our OS services
+    mov word [es:0x8*4], _int0x8	   ; setup our OS services
     mov [es:0x8*4+2], cs
     sti
     pop es
@@ -32,7 +33,7 @@
     int 0x19                                ; reboot
 
 _int0x8:
-	mov si, strAuthor						; load timer message
+	mov si, strAuthor	            ; load timer message
 	call _disp_str
     iret
         
@@ -46,6 +47,19 @@ _disp_str:
     int 0x10                                ; invoke BIOS
     jmp _disp_str
 .DONE:
+    ret
+    
+_display_endl:
+    mov ah, 0x0E        ; BIOS teletype acts on newline!
+    mov al, 0x0D
+    mov bh, 0x00
+    mov bl, 0x07
+    int 0x10
+    mov ah, 0x0E        ; BIOS teletype acts on linefeed!
+    mov al, 0x0A
+    mov bh, 0x00
+    mov bl, 0x07
+    int 0x10
     ret
    
 [SEGMENT .data]
