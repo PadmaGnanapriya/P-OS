@@ -64,11 +64,9 @@ rm -rf tmp-loop
 
 
 rm -f disk_images/pos_1.iso
-mkisofs -quiet -V 'MIKEOS' -input-charset iso8859-1 -o disk_images/pos_1.iso -b pos.flp disk_images/ || exit
+mkisofs -quiet -V 'P-OS' -input-charset iso8859-1 -o disk_images/pos_1.iso -b pos.flp disk_images/ || exit
 
 clear
-echo '>>> You have created CD-ROM ISO image successfully'
-echo '>>> To preview in QEMU machine emulator and virtualizer, type in terminal :-'
-echo '     qemu-system-x86_64 -cdrom disk_images/pos_1.iso'
+echo '>>> You have created CD-ROM ISO image (pos_1.iso) successfully.'
 
-qemu-system-x86_64 -cdrom disk_images/pos_1.iso
+
