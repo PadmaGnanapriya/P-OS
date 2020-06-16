@@ -63,11 +63,10 @@ rm -rf tmp-loop
 ######################
 
 
-rm -f disk_images/pos_1.iso
-mkisofs -quiet -V 'P-OS' -input-charset iso8859-1 -o disk_images/pos_1.iso -b pos.flp disk_images/ || exit
-
+rm -f disk_images/pos_2.iso
+mkisofs -quiet -V 'P-OS' -input-charset iso8859-1 -o disk_images/pos_2.iso -b pos.flp disk_images/ || exit
 
 clear
-echo '>>> You have created CD-ROM ISO image (pos_1.iso) successfully.'
+echo '>>> You have created CD-ROM ISO image (pos_2.iso) successfully.'
 
 
