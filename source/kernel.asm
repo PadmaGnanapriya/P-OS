@@ -23,9 +23,13 @@
     pop es
     pop dx
 
+	call _display_endl
+	call _display_endl
     mov si, strWelcomeMsg   ; load message
     mov al, 0x01            ; request sub-service 0x01
     int 0x21
+	call _display_endl
+
 
 	call _shell				; call the shell
     
@@ -128,6 +132,10 @@ _shell:
 	mov si, strHelpMsg3
 	mov al, 0x01
     int 0x21
+    call _display_endl
+	mov si, strHelpMsg4
+	mov al, 0x01
+    int 0x21
 	jmp _cmd_done
 
 
@@ -143,6 +151,8 @@ _shell:
 	jne	_cmd_reboot		;next command
 
     	call _display_endl
+		call _display_endl
+		call _display_endl   ;Make empty lines before hardware details
 	mov si, strhInfo
 	mov al, 0x01
 	int 0x21
@@ -260,6 +270,8 @@ _shell:
 		mov al, 0x01
 		int 0x21
 		ret
+		call _display_endl	
+		call _display_endl
 		
 
 	; Reboot shell
@@ -268,9 +280,35 @@ _shell:
 	mov di, cmdReBoot
 	mov cx, 5
 	repe	cmpsb
+	jne	_cmd_off		;next command
+
+	;je _shell_end			;exit from shell
+	jmp _shell_end
+	jmp _cmd_done
+
+
+
+    	; Shut down POS
+	_cmd_off:		
+	mov si, strCmd0
+	mov di, cmdOff
+	mov cx, 4
+	repe	cmpsb
 	jne	_cmd_unknown		;next command
 
-	je _shell_end			;exit from shell
+
+	je _shutdown			;Power off
+
+    _shutdown:
+    mov ax, 0x1000
+    mov ax, ss
+    mov sp, 0xf000
+    mov ax, 0x5307
+    mov bx, 0x0001
+    mov cx, 0x0003
+    int 0x15
+
+
 
 	_cmd_unknown:
 	call _display_endl
@@ -542,26 +580,28 @@ _display_prompt:
 	ret
 
 [SEGMENT .data]
-    strWelcomeMsg   db  " Welcome to P-OS", 0x00
-	strPrompt		db	" User >> ", 0x00
+    strWelcomeMsg   db  "        Welcome to P-OS", 0x00
+	strPrompt		db	" User>>> ", 0x00
 	cmdMaxLen		db	255			;maximum length of commands
 
-	strOsName		db	"P-OS", 0x00	;OS details
+	strOsName		db	" P-OS", 0x00	;OS details
 	strMajorVer		db	"1", 0x00
 	strMinorVer		db	".00", 0x00
 
 	cmdVer			db	"ver", 0x00		; internal commands
 	cmdReBoot    	db	"boot", 0x00
 	cmdHelp 		db 	"help", 0x00
-	cmdhInfo		db	"details", 0x00
+	cmdhInfo		db	"info", 0x00
+    cmdOff          db  "off", 0x00
 
 	txtVersion		db	"version", 0x00	;messages and other strings
-	msgUnknownCmd	db	"Unknown command or bad file name! Plese type help to get 'help' menu", 0x00
+	msgUnknownCmd	db	" Unknown command or bad file name! Plese type help to get 'help' menu", 0x00
 
 	strHelpMsg0		db 	" help for help menu",0x00
 	strHelpMsg1		db 	" ver for version",0x00
-	strHelpMsg2		db 	" details for hardware details",0x00
+	strHelpMsg2		db 	" info for hardware informations",0x00
 	strHelpMsg3		db 	" boot for Reboot",0x00
+    strHelpMsg4     db  " off for shutdown", 0x00
 	strhInfo		db	" -------  Hardware Information  ------- ",0x00
 	strcpuid		db	" CPU Vender : ",0x00
 	strvender		db	" CPU Vender :",0x00
