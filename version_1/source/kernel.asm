@@ -24,7 +24,6 @@
     pop dx
 
 	call _display_endl
-	call _display_endl
     mov si, strWelcomeMsg   ; load message
     mov al, 0x01            ; request sub-service 0x01
     int 0x21
@@ -157,8 +156,8 @@ _shell:
 	mov al, 0x01
 	int 0x21
 
+    call _cmd_ProcessorType
 	call _cmd_cpuVendorID
-	call _cmd_ProcessorType
 	call _cmd_serialport
 	call _cmd_ProcessorSerialNo
 	;call _cmd_ProcessorFeature
@@ -261,6 +260,7 @@ _shell:
 	mov si, strMouseNo
 	mov al, 0x01
 	int 0x21
+	call _display_endl
 	ret
 	ok:
 		mov ax, 1
@@ -269,9 +269,10 @@ _shell:
 		mov si, strMouseYes
 		mov al, 0x01
 		int 0x21
-		ret
-		call _display_endl	
 		call _display_endl
+		ret
+	
+
 		
 
 	; Reboot shell
@@ -597,11 +598,11 @@ _display_prompt:
 	txtVersion		db	"version", 0x00	;messages and other strings
 	msgUnknownCmd	db	" Unknown command or bad file name! Plese type help to get 'help' menu", 0x00
 
-	strHelpMsg0		db 	" help for help menu",0x00
-	strHelpMsg1		db 	" ver for version",0x00
-	strHelpMsg2		db 	" info for hardware informations",0x00
-	strHelpMsg3		db 	" boot for Reboot",0x00
-    strHelpMsg4     db  " off for shutdown", 0x00
+	strHelpMsg0		db 	"     help  for help menu",0x00
+	strHelpMsg1		db 	"     ver   for version",0x00
+	strHelpMsg2		db 	"     info  for hardware informations",0x00
+	strHelpMsg3		db 	"     boot  for Reboot",0x00
+    strHelpMsg4     db  "     off   for shutdown", 0x00
 	strhInfo		db	" -------  Hardware Information  ------- ",0x00
 	strcpuid		db	" CPU Vender : ",0x00
 	strvender		db	" CPU Vender :",0x00
