@@ -586,8 +586,8 @@ _display_prompt:
 	cmdMaxLen		db	255			;maximum length of commands
 
 	strOsName		db	" P-OS", 0x00	;OS details
-	strMajorVer		db	"1", 0x00
-	strMinorVer		db	".00", 0x00
+	strMajorVer		db	"2", 0x00
+	strMinorVer		db	".0", 0x00
 
 	cmdVer			db	"ver", 0x00		; internal commands
 	cmdReBoot    	db	"boot", 0x00
