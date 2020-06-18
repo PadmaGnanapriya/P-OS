@@ -10,7 +10,7 @@ sudo sh run_2.sh
 cd ..
 
 sleep 0.5
-clear
+#clear
 echo " We compile all files and create new iso files for each versions."
 echo ' '
 echo '>>> You have created CD-ROM ISO images successfully.'
