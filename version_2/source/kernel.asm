@@ -251,7 +251,6 @@ _display_hardware_info:			; Procedure for printing Hardware info
 
 	;CPU Information --------------------------------------------------------------------------
 	call _display_endl
-	call _display_endl
 	mov si, strCPUVendor
 	mov al, 0x01
 	int 0x21
@@ -311,7 +310,7 @@ _hard_info:
         int 0x10
 
 _mouse_status:
-		call _display_endl	
+
 		call _display_endl
 		mov si, strmouse
 		mov al, 0x01
@@ -508,7 +507,7 @@ _save_string:
 	mov dword [si+4], ebx
 	mov dword [si+8], ecx
 	mov dword [si+12], edx
-	call _cmd_done
+
 	ret
 
 
@@ -826,17 +825,14 @@ _display_prompt:
     strWelcomeMsg   db  "        Welcome to P-OS", 0x00
 	strPrompt		db	" User>>> ", 0x00
 	cmdMaxLen		db	255			;maximum length of commands
-
 	strOsName		db	" P-OS", 0x00	;OS details
 	strMajorVer		db	"2", 0x00
 	strMinorVer		db	".0", 0x00
-
 	cmdVer			db	"ver", 0x00		; internal commands
 	cmdReBoot    	db	"boot", 0x00
 	cmdHelp 		db 	"help", 0x00
 	cmdhInfo		db	"info", 0x00
     cmdOff          db  "off", 0x00
-
 	txtVersion		db	"version", 0x00	;messages and other strings
 	msgUnknownCmd	db	" Unknown command or bad file name! Plese type help to get 'help' menu", 0x00
 
@@ -855,18 +851,14 @@ _display_prompt:
 	strserialportnumber	db	" Number of serial port :",0x00
 	strserialnumber		db	" Serial Number :",0x00	
 
-
-
-
-	strInfo			db	"---------------------- Hardware Information ---------------------- ", 0x00
-	strmemory		db	" Base Memory size: ", 0x00
+	strInfo			    db	"---------------------- Hardware Information ---------------------- ", 0x00
+	strmemory		    db	" Base Memory size: ", 0x00
 	strsmallextended	db	" Extended memory between(1M - 16M): ", 0x00
 	strbigextended		db      " Extended memory above 16M: ", 0x00
 	strCPUVendor		db	" CPU Vendor : ", 0x00
 	strCPUdescription	db	" CPU description: ", 0x00
 	strNotSupported		db	" Not supported.", 0x00
-	strhdnumber		db	" Number of hard drives: ",0x00
-
+	strhdnumber		    db	" Number of hard drives: ",0x00
 	strserialport1		db	" Base I/O address for serial port 1 (communications port 1 - COM 1): ", 0x00
 	strtotalmemory		db	" Total memory: ", 0x00
 
@@ -879,14 +871,9 @@ _display_prompt:
 	sse42 			db 'SSE4.2 ', 0x00
 	aes				db 'AES ', 0x00
 	avx 			db 'AVX ', 0x00
-
-
 	strMouse0		db	"The Mouse Not Found",0x00
 	strMouse1		db 	"The Mouse Found",0x00
-	strmouse 		db 	"Mouse Status : ",0x00
-
-
-
+	strmouse 		db 	" Mouse Status : ",0x00
 
 [SEGMENT .bss]
 	strUserCmd	resb	256		;buffer for user commands
