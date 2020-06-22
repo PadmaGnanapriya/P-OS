@@ -303,6 +303,23 @@ _shell_end:
 	line13    db  "                              Welcome to POS ", 0x00
 	line14    db  "                       Developed By- Padma Gnanapriya, ", 0x00
 	line15    db  "     a SOFTWARE ENGINEERING undergraduate From University Of Kelaniya ", 0x00
+	line5A     db  "                 _______            ", 0x00
+	line6A     db  "                 | ____ \           ", 0x00 
+	line7A     db  "                 | |   \ \        ", 0x00
+	line8A     db  "                 | |___/ /  __     ", 0x00;
+	line9A     db  "                 |  ____/  |__|     ", 0x00
+	line10A    db  "                 | |              ", 0x00
+	line11A    db  "                 | |              ", 0x00
+	line12A    db  "                 |_|                ", 0x00
+	line5B     db  "                 _______            _____         ", 0x00
+	line6B     db  "                 | ____ \          / ___ \       ", 0x00 
+	line7B     db  "                 | |   \ \        / /   \ \        ", 0x00
+	line8B     db  "                 | |___/ /  __   / /     \ \      ", 0x00;
+	line9B     db  "                 |  ____/  |__|  | |     | |      ", 0x00
+	line10B    db  "                 | |             \ \     / /         ", 0x00
+	line11B    db  "                 | |              \ \___/ /      ", 0x00
+	line12B    db  "                 |_|               \_____/     ", 0x00
+	
 	
 
 [SEGMENT .bss]

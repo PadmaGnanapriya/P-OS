@@ -59,6 +59,254 @@ clean_:
         int 0x21
         call _display_endl
 
+    mov si, line5A   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line6A  
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+
+    mov si, line7A   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line8A   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line9A   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+     mov si, line10A   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+     mov si, line11A   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line12A   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line1   
+        mov al, 0x01           
+        int 0x21
+        call _display_endl
+
+    mov si, line1  
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line1 
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line13  
+        mov al, 0x01           
+        int 0x21
+        call _display_endl
+
+    mov si, line1   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+    
+    mov si, line1   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line14   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line1   
+        mov al, 0x01           
+        int 0x21
+        call _display_endl
+
+    mov si, line15   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line1  
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line1  
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line2  
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+call sleep_small
+
+    mov si,line1   
+        mov al, 0x01           
+        int 0x21
+        call _display_endl
+
+    mov si, line2   
+        mov al, 0x01           
+        int 0x21
+        call _display_endl
+
+    mov si, line1   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line1   
+        mov al, 0x01           
+        int 0x21
+        call _display_endl
+
+    mov si, line5B   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line6B  
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+
+    mov si, line7B   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line8B   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line9B   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+     mov si, line10B   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+     mov si, line11B   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line12B   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line1   
+        mov al, 0x01           
+        int 0x21
+        call _display_endl
+
+    mov si, line1  
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line1 
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line13  
+        mov al, 0x01           
+        int 0x21
+        call _display_endl
+
+    mov si, line1   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+    
+    mov si, line1   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line14   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line1   
+        mov al, 0x01           
+        int 0x21
+        call _display_endl
+
+    mov si, line15   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line1  
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line1  
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line2  
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+
+
+call sleep_small
+
+    ov si,line1   
+        mov al, 0x01           
+        int 0x21
+        call _display_endl
+
+    mov si, line2   
+        mov al, 0x01           
+        int 0x21
+        call _display_endl
+
+    mov si, line1   
+        mov al, 0x01            
+        int 0x21
+        call _display_endl
+
+    mov si, line1   
+        mov al, 0x01           
+        int 0x21
+        call _display_endl
+
     mov si, line5   
         mov al, 0x01            
         int 0x21
@@ -160,22 +408,24 @@ clean_:
         int 0x21
         call _display_endl
 
+call sleep_small
 
-
-;Sleep small time
-
-        mov    ax,500  ; 
-    wta:     
-        mov    cx,65000
-    wt:    
-        nop
-        loop   wt
-         dec   ax
-         jnz   wta
-
-
+call sleep_small
 call clean_screen_
   ret
+
+
+    sleep_small:
+        mov    ax,230  ; 
+    wtaz:     
+        mov    cx,65000
+    wtz:    
+        nop
+        loop   wtz
+         dec   ax
+         jnz   wtaz
+        ret
+
 
  
  
