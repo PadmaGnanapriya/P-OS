@@ -218,9 +218,10 @@ _serial_ports:
 
 
 	
-jmp _cmd_done	
+;jmp _cmd_done	
 
 jmp _cpu_Features
+
 
 	_cpu_not_supported:
 	mov si, strNotSupported
@@ -236,6 +237,8 @@ jmp _cpu_Features
 		mov si, strcpufeatures
 		mov al, 0x01
 		int 0x21
+
+		
 
 		checksse:
 			test edx, 00000010000000000000000000000000b
@@ -302,20 +305,18 @@ jmp _cpu_Features
 			mov al, 0x01
 			int 0x21
 
-
-
-
+			
 _end:
 	;Base I/O address for serial port 1 (communications port 1 - COM 1)	
 	
 	
-jmp _cmd_done
+
 	call _display_endl
 
 	pop si
-       pop es
-      pop dx
-       pop cx
+        pop es
+        pop dx
+        pop cx
         pop bx
         pop ax
 
@@ -357,6 +358,7 @@ _print_char:
         mov bh, 0x00
         mov bl, 0x07
         int 0x10
+
 	pop ax			; restore AX
 	ret
 
@@ -365,5 +367,7 @@ _save_string:
 	mov dword [si+4], ebx
 	mov dword [si+8], ecx
 	mov dword [si+12], edx
+
 	ret
+
 

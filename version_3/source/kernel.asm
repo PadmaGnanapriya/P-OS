@@ -24,8 +24,9 @@
     pop dx
 
 
-	call clean_screen_
-
+	
+	call welcome
+	
   
 
 	call _shell				; call the shell
@@ -156,7 +157,7 @@ _cmd_help:
 
 	; >>>>>>>>>>>>>>>>>~~~~~~~~~~~~~~~~~
 
-	; Reboot shell
+	; Clean Screen
 _cmd_clear:		
 	mov si, strCmd0
 	mov di, cmdCls
@@ -228,6 +229,7 @@ _shell_end:
 	%INCLUDE "features/hardware_info.asm" //
 	%INCLUDE "features/keyboard.asm"   //Move cmd funtions into here
 	%INCLUDE "features/clean_screen.asm"
+	%INCLUDE "features/welcome.asm"
 
 
 
@@ -286,6 +288,22 @@ _shell_end:
 	strMouse0		db	"The Mouse Not Found",0x00
 	strMouse1		db 	"The Mouse Found",0x00
 	strmouse 		db 	" Mouse Status : ",0x00
+
+
+	line1     db  " ", 0x00
+	line2     db  " =============================================================================", 0x00
+	line5     db  "                 _______            _____        _____   ", 0x00
+	line6     db  "                 | ____ \          / ___ \      / ____|  ", 0x00 
+	line7     db  "                 | |   \ \        / /   \ \    / /       ", 0x00
+	line8     db  "                 | |___/ /  __   / /     \ \   \ \__     ", 0x00;
+	line9     db  "                 |  ____/  |__|  | |     | |    \__ \    ", 0x00
+	line10    db  "                 | |             \ \     / /       \ \   ", 0x00
+	line11    db  "                 | |              \ \___/ /    ____/ /   ", 0x00
+	line12    db  "                 |_|               \_____/    |_____/    ", 0x00
+	line13    db  "                              Welcome to POS ", 0x00
+	line14    db  "                       Developed By- Padma Gnanapriya, ", 0x00
+	line15    db  "     a SOFTWARE ENGINEERING undergraduate From University Of Kelaniya ", 0x00
+	
 
 [SEGMENT .bss]
 	strUserCmd	resb	256		;buffer for user commands
