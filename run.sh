@@ -5,7 +5,9 @@ sudo sh run_1.sh
 cd ..
 cd version_2
 sudo sh run_2.sh
-
+cd ..
+cd version_3
+sudo sh run_3.sh
 
 cd ..
 
@@ -18,10 +20,12 @@ echo '>>> For preview in QEMU machine emulator & virtualizer, type on the termin
 echo '>>> For version_1 :- '
 echo '     qemu-system-x86_64 -cdrom version_1/disk_images/pos_1.iso'
 echo '>>> For version_2 :- '
-echo '     qemu-system-x86_64 -cdrom version_1/disk_images/pos_2.iso'
+echo '     qemu-system-x86_64 -cdrom version_2/disk_images/pos_2.iso'
+echo '>>> For version_3 :- '
+echo '     qemu-system-x86_64 -cdrom version_3/disk_images/pos_3.iso'
 
 
 
-qemu-system-x86_64 -cdrom version_2/disk_images/pos_2.iso
+qemu-system-x86_64 -cdrom version_3/disk_images/pos_3.iso
 
 read Padma
