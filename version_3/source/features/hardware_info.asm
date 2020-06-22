@@ -4,7 +4,7 @@ _cmd_hardwareInfo:
 	mov di, cmdhInfo
 	mov cx, 4
 	repe	cmpsb
-	jne	_cmd_reboot		;next command
+	jne	_cmd_clear		;next command
 	
 
 

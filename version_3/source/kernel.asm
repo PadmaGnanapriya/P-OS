@@ -24,12 +24,9 @@
     pop dx
 
 
+	call clean_screen_
 
-	call _display_endl
-    mov si, strWelcomeMsg   ; load message
-    mov al, 0x01            ; request sub-service 0x01
-    int 0x21
-	call _display_endl
+  
 
 	call _shell				; call the shell
     
@@ -160,15 +157,15 @@ _cmd_help:
 	; >>>>>>>>>>>>>>>>>~~~~~~~~~~~~~~~~~
 
 	; Reboot shell
-_cmd_reboot:		
+_cmd_clear:		
 	mov si, strCmd0
-	mov di, cmdReBoot
+	mov di, cmdCls
 	mov cx, 4
 	repe	cmpsb
 	jne	_cmd_off		;next command  >>>>>>>>>>>>>>>>>~~~~~~~~~~~~~~~~~
 
-	jmp _shell_end
-	jmp _cmd_done
+	jmp clean_screen_
+
 
 
 
@@ -230,6 +227,7 @@ _shell_end:
 
 	%INCLUDE "features/hardware_info.asm" //
 	%INCLUDE "features/keyboard.asm"   //Move cmd funtions into here
+	%INCLUDE "features/clean_screen.asm"
 
 
 
@@ -242,17 +240,18 @@ _shell_end:
 	strMajorVer		db	"3", 0x00
 	strMinorVer		db	".0", 0x00
 	cmdVer			db	"ver", 0x00		; internal commands
-	cmdReBoot    	db	"boot", 0x00
+	;cmdReBoot    	db	"boot", 0x00
 	cmdHelp 		db 	"help", 0x00
 	cmdhInfo		db	"info", 0x00
     cmdOff          db  "off", 0x00
+	cmdCls        db  "cls", 0x00
 	txtVersion		db	"version", 0x00	;messages and other strings
 	msgUnknownCmd	db	" Unknown command or bad file name! Plese type help to get 'help' menu", 0x00
 
 	strHelpMsg0		db 	"     help  for help menu",0x00
 	strHelpMsg1		db 	"     ver   for version",0x00
 	strHelpMsg2		db 	"     info  for hardware informations",0x00
-	strHelpMsg3		db 	"     boot  for Reboot",0x00
+	strHelpMsg3		db 	"     cls  for Clear Screen",0x00
     strHelpMsg4     db  "     off   for shutdown", 0x00
 	strhInfo		db	" -------  Hardware Information  ------- ",0x00
 	strcpuid		db	" CPU Vender : ",0x00
