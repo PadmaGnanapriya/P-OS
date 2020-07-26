@@ -1,3 +1,10 @@
+
+;   P-OS is an operating system developed by "Padma Gnanapriya" using Assembly language.
+;   Read the full article from here: 
+;   https://medium.com/@padmaisuru/a-simple-your-own-os-design-implementation-for-reading-hardware-details-e502c49e3d2f
+;   Get full source code here:
+;   https://github.com/PadmaGnanapriya/P-OS/
+
 welcome:
 
 clean_:
@@ -287,7 +294,7 @@ call sleep_small
 
 call sleep_small
 
-    ov si,line1   
+    mov si,line1   
         mov al, 0x01           
         int 0x21
         call _display_endl
@@ -427,5 +434,10 @@ call clean_screen_
         ret
 
 
+;   P-OS is an operating system developed by "Padma Gnanapriya" using Assembly language.
+;   Read the full article from here: 
+;   https://medium.com/@padmaisuru/a-simple-your-own-os-design-implementation-for-reading-hardware-details-e502c49e3d2f
+;   Get full source code here:
+;   https://github.com/PadmaGnanapriya/P-OS/
  
  

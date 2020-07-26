@@ -1,3 +1,10 @@
+
+#   P-OS is an operating system developed by "Padma Gnanapriya" using Assembly language.
+#   Read the full article from here: 
+#   https://medium.com/@padmaisuru/a-simple-your-own-os-design-implementation-for-reading-hardware-details-e502c49e3d2f
+#   Get full source code here:
+#   https://github.com/PadmaGnanapriya/P-OS/
+
 echo " We compile all files and create new iso files for each versions."
 
 cd version_1
@@ -23,9 +30,13 @@ echo '>>> For version_2 :- '
 echo '     qemu-system-x86_64 -cdrom version_2/disk_images/pos_2.iso'
 echo '>>> For version_3 :- '
 echo '     qemu-system-x86_64 -cdrom version_3/disk_images/pos_3.iso'
-
+echo ''
+echo '->   P-OS is an operating system developed by "Padma Gnanapriya" using Assembly language.'
+echo '->   Read the full article from here:' 
+echo '->   https://medium.com/@padmaisuru/a-simple-your-own-os-design-implementation-for-reading-hardware-details-e502c49e3d2f'
 
 
 qemu-system-x86_64 -cdrom version_3/disk_images/pos_3.iso
 
+#To execute all bash commands
 read Padma

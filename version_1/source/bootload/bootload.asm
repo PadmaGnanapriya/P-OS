@@ -1,7 +1,10 @@
-;*************************************************************************
-;The ultimate boot-strap loader
-;To load a file from a DOS FAT12 floppy as the OS
-;*************************************************************************
+
+;   P-OS is an operating system developed by "Padma Gnanapriya" using Assembly language.
+;   Read the full article from here: 
+;   https://medium.com/@padmaisuru/a-simple-your-own-os-design-implementation-for-reading-hardware-details-e502c49e3d2f
+;   Get full source code here:
+;   https://github.com/PadmaGnanapriya/P-OS/
+
 [BITS 16]
 [ORG 0x0000]
 jmp     START
@@ -242,3 +245,10 @@ jmp     START
           TIMES 510-($-$$) DB 0
           DW 0xAA55
      ;*************************************************************************
+     
+     
+;   P-OS is an operating system developed by "Padma Gnanapriya" using Assembly language.
+;   Read the full article from here: 
+;   https://medium.com/@padmaisuru/a-simple-your-own-os-design-implementation-for-reading-hardware-details-e502c49e3d2f
+;   Get full source code here:
+;   https://github.com/PadmaGnanapriya/P-OS/

@@ -1,5 +1,9 @@
-#!/bin/sh
-# type sudo sh run.sh in terminal to execute pos simple Operating system
+
+#   P-OS is an operating system developed by "Padma Gnanapriya" using Assembly language.
+#   Read the full article from here: 
+#   https://medium.com/@padmaisuru/a-simple-your-own-os-design-implementation-for-reading-hardware-details-e502c49e3d2f
+#   Get full source code here:
+#   https://github.com/PadmaGnanapriya/P-OS/
 
 
 
